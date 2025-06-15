@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Generator | Home</title>
+    <link rel="stylesheet" href="bingo-gen.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bingo Generator</h1>
+            <p>Generate bingo cards, call lists, and check winners</p>
+        </div>
+
+        <div class="content">
+            <div class="forms-grid">
+                <div class="form-card">
+                    <h3>Generate Card Sheet</h3>
+                    <form onsubmit="handleCardSheet(event)">
+                        <div class="form-group">
+                            <label>Rows:</label>
+                            <input name="x" value="3" type="number" min="1" max="10">
+                        </div>
+                        <div class="form-group">
+                            <label>Columns:</label>
+                            <input name="y" value="3" type="number" min="1" max="10">
+                        </div>
+                        <input type="submit" value="Generate Card Sheet">
+                    </form>
+                </div>
+
+                <div class="form-card">
+                    <h3>Generate Call List</h3>
+                    <form onsubmit="generateCallList(event)">
+                        <div class="form-group">
+                            <label>Call List #:</label>
+                            <input name="call_list_id" value="random" type="text">
+                        </div>
+                        <input type="submit" value="Generate Call List">
+                    </form>
+                </div>
+
+                <div class="form-card">
+                    <h3>Generate Single Card</h3>
+                    <form onsubmit="generateSingleCard(event)">
+                        <div class="form-group">
+                            <label>Card #:</label>
+                            <input name="card_id" value="random" type="text">
+                        </div>
+                        <input type="submit" value="Generate Single Card">
+                    </form>
+                </div>
+
+                <div class="form-card">
+                    <h3>Check Winner</h3>
+                    <form onsubmit="checkWinner(event)">
+                        <div class="form-group">
+                            <label>Card #:</label>
+                            <input name="card_id" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Call List #:</label>
+                            <input name="call_list_id" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Numbers Called:</label>
+                            <input name="numbers_called" type="number" min="1" max="75" required>
+                        </div>
+                        <input type="submit" value="Check Winner">
+                    </form>
+                </div>
+            </div>
+
+            <div id="results" class="hidden">
+                <button class="copy-button" onclick="copyResults()">Copy to Clipboard</button>
+                <h3 id="results-title">Results</h3>
+                <div id="results-content"></div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p><a href="https://github.com/andremiller" target="_blank">github.com/andremiller</a></p>
+        </footer>
+    </div>
+
+    <script src="bingo-gen.js"></script>
+</body>
+</html>
